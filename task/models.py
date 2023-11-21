@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.utils.text import slugify
+from unidecode import unidecode
 
 class Task(models.Model):
     title = models.CharField(max_length=50)
@@ -8,14 +9,14 @@ class Task(models.Model):
     report = models.TextField(max_length=5000)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
     service_name = models.CharField(max_length=100)
-    status = models.BooleanField()
-    slug = models.SlugField(default="", null=False)
+    status = models.BooleanField(default=False)
+    slug = models.SlugField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    order = models.DateTimeField(default=None, blank=True, null=True)
+    order = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
-        if not self.order:
-            self.order = self.created_at
+        if not self.slug:
+            self.slug = slugify(unidecode(self.title))
         super().save(*args, **kwargs)
 
     def __str__(self):

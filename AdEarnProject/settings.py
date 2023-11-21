@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'task',
+    'general',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,13 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'smtp.example.com'  # Ваш SMTP сервер
+# EMAIL_PORT = 587  # Порт вашого SMTP сервера
+# EMAIL_HOST_USER = 'your_email@example.com'  # Ваш логін
+# EMAIL_HOST_PASSWORD = 'your_password'  # Ваш пароль
+# EMAIL_USE_TLS = True  # Використовувати TLS
+# EMAIL_USE_SSL = False  # Вимкнути використання SSL (для відладки)
+# DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Ваша електронна адреса

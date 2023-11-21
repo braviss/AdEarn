@@ -2,25 +2,15 @@
 
 {% block content %}
     <div class="container mt-5">
-
-        <table class="table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>{{ object.title }}</td>
-                        <td>{{ object.category }}</td>
-                        <td>
-                            <a href="{% url 'task_list' %}">На головну</a>
-{#                            <a href="{% url 'task_up' object.id %}">Up</a>#}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item">{{ object.title }}</li>
+                  <li class="list-group-item">{{ object.category }}</li>
+                  <li class="list-group-item">{{ object.description }}</li>
+                  <li class="list-group-item"><a href="{% url 'task_list' %}">< Main</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 {% endblock %}
